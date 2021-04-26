@@ -28,6 +28,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         table.dataSource = self
         let addbutton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addbuttonaction))
         self.navigationItem.rightBarButtonItem = addbutton
+        self.navigationItem.leftBarButtonItem = editButtonItem
     }
     @objc func addbuttonaction(){
         let alert = UIAlertController(title: "Ekle", message: "Bir not ekleyin", preferredStyle: .alert)
@@ -48,6 +49,17 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         list.insert(not, at: 0)
         let indexpath = IndexPath(row: 0, section: 0)
         table.insertRows(at: [indexpath], with: .left)
+    }
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        table.setEditing(editing, animated: animated)
+        
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            list.remove(at: indexPath.row)
+            table.deleteRows(at: [indexPath], with: .left)
+        }
     }
 
 
