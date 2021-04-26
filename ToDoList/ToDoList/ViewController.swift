@@ -26,6 +26,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         // Do any additional setup after loading the view.
         table.delegate = self
         table.dataSource = self
+        let addbutton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addbuttonaction))
+        self.navigationItem.rightBarButtonItem = addbutton
+    }
+    @objc func addbuttonaction(){
+        
     }
 
 
