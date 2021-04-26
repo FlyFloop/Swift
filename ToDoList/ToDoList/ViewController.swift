@@ -20,7 +20,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var list : [String] = []
     var listAc : [String] = []
     var fileO : URL!
+    var fileA : URL!
     var selectedrow : Int = -1
+    var aciklama : String = String()
     
     
     @IBOutlet weak var table: UITableView!
@@ -34,7 +36,24 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.navigationItem.leftBarButtonItem = editButtonItem
         let baseURL = try! FileManager.default.url(for: FileManager.SearchPathDirectory.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         fileO = baseURL.appendingPathComponent("list.txt")
+        let baseAURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        fileA = baseAURL.appendingPathComponent("aciklama.txt")
+       
         loadData()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if selectedrow == -1 {
+            
+        }
+        else if  listAc[selectedrow] == aciklama {
+            return
+        }
+        else{
+            listAc[selectedrow] = aciklama
+        }
+        saveData()
     }
     @objc func addbuttonaction(){
         let alert = UIAlertController(title: "Ekle", message: "Bir not ekleyin", preferredStyle: .alert)
@@ -53,8 +72,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     func notekle(not : String){
         list.insert(not, at: 0)
+        listAc.insert(not, at: 0)
         let indexpath = IndexPath(row: 0, section: 0)
         table.insertRows(at: [indexpath], with: .left)
+        table.selectRow(at: indexpath, animated: true, scrollPosition: .none)
+        performSegue(withIdentifier: "viewacikla", sender: self)
         saveData()
     }
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -65,24 +87,43 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             list.remove(at: indexPath.row)
+            listAc.remove(at: indexPath.row)
             table.deleteRows(at: [indexPath], with: .left)
             saveData()
         }
     }
     func saveData(){
-        let veriler = NSArray(array: list)
-        do{
-            try veriler.write(to: fileO)
-        }catch{
-         print("write fail")
-        }
+//        let veriler = NSArray(array: list)
+//        do{
+//            try veriler.write(to: fileO)
+//        }catch{
+//         print("write fail")
+//        }
+//        let verilerA = NSArray(array: listAc)
+//        do{
+//            try verilerA.write(to: fileA)
+//        }catch{
+//            print("write A fail")
+//        }
+        UserDefaults.standard.setValue(list, forKey: "list")
+        UserDefaults.standard.setValue(listAc, forKey: "listac")
+
         
     }
     func loadData(){
-        if let loadedarray = NSArray(contentsOf: fileO) as? [String] {
-            list = loadedarray
-            table.reloadData()
+//        if let loadedarray = NSArray(contentsOf: fileO) as? [String] {
+//            list = loadedarray
+//        }
+//        if let loadedAArray = NSArray(contentsOf: fileA) as? [String] {
+//            listAc = loadedAArray
+//        }
+        if let l = UserDefaults.standard.value(forKey: "list") as? [String] {
+            list = l
         }
+        if let la = UserDefaults.standard.value(forKey: "listac") as? [String]{
+            listAc = la
+        }
+        table.reloadData()
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "viewacikla", sender: self)
@@ -90,7 +131,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let aciklamaview = segue.destination as! AciklamalarViewController
         selectedrow = table.indexPathForSelectedRow!.row
-        aciklamaview.setaciklama(a: list[selectedrow])
+        aciklamaview.setaciklama(a: listAc[selectedrow])
+        aciklamaview.masterview = self
     }
     
 

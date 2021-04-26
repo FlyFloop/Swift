@@ -10,6 +10,7 @@ import UIKit
 class AciklamalarViewController: UIViewController {
 
     @IBOutlet weak var textview: UITextView!
+    var masterview : ViewController?
     var text : String!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,9 @@ class AciklamalarViewController: UIViewController {
     }
     func setaciklama(a : String){
     text = a
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        masterview?.aciklama = textview.text
     }
     
 
