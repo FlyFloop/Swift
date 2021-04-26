@@ -75,8 +75,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         listAc.insert(not, at: 0)
         let indexpath = IndexPath(row: 0, section: 0)
         table.insertRows(at: [indexpath], with: .left)
-        table.selectRow(at: indexpath, animated: true, scrollPosition: .none)
-        performSegue(withIdentifier: "viewacikla", sender: self)
+//        table.selectRow(at: indexpath, animated: true, scrollPosition: .none)
+//        performSegue(withIdentifier: "viewacikla", sender: self)
         saveData()
     }
     override func setEditing(_ editing: Bool, animated: Bool) {
