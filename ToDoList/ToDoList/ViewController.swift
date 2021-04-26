@@ -30,7 +30,24 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.navigationItem.rightBarButtonItem = addbutton
     }
     @objc func addbuttonaction(){
-        
+        let alert = UIAlertController(title: "Ekle", message: "Bir not ekleyin", preferredStyle: .alert)
+        alert.addTextField { (textfield) in
+            textfield.placeholder = "Notu buraya girin"
+        }
+        let alertadd = UIAlertAction(title: "Ekle", style: UIAlertAction.Style.default) { (action) in
+            let girdi = alert.textFields![0]
+            print("add works")
+            self.notekle(not:girdi.text!)
+        }
+        let alertcancel = UIAlertAction(title: "İptal", style: .cancel, handler: nil)
+        alert.addAction(alertcancel)
+        alert.addAction(alertadd)
+        present(alert, animated: true, completion: nil)
+    }
+    func notekle(not : String){
+        list.insert(not, at: 0)
+        let indexpath = IndexPath(row: 0, section: 0)
+        table.insertRows(at: [indexpath], with: .left)
     }
 
 
