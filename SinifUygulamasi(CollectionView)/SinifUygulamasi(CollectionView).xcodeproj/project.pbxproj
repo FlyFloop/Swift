@@ -15,6 +15,8 @@
 		C52891FA263C0DCB008FF14E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C52891F8263C0DCB008FF14E /* LaunchScreen.storyboard */; };
 		C5289205263C0DCB008FF14E /* SinifUygulamasi_CollectionView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5289204263C0DCB008FF14E /* SinifUygulamasi_CollectionView_Tests.swift */; };
 		C5289210263C0DCB008FF14E /* SinifUygulamasi_CollectionView_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C528920F263C0DCB008FF14E /* SinifUygulamasi_CollectionView_UITests.swift */; };
+		C5289221263C1104008FF14E /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5289220263C1104008FF14E /* CollectionViewCell.swift */; };
+		C5289226263C1125008FF14E /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5289225263C1125008FF14E /* CollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		C528920B263C0DCB008FF14E /* SinifUygulamasi(CollectionView)UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SinifUygulamasi(CollectionView)UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C528920F263C0DCB008FF14E /* SinifUygulamasi_CollectionView_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinifUygulamasi_CollectionView_UITests.swift; sourceTree = "<group>"; };
 		C5289211263C0DCB008FF14E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5289220263C1104008FF14E /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		C5289225263C1125008FF14E /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				C52891EF263C0DCA008FF14E /* SceneDelegate.swift */,
 				C52891F1263C0DCA008FF14E /* ViewController.swift */,
 				C52891F3263C0DCA008FF14E /* Main.storyboard */,
+				C5289225263C1125008FF14E /* CollectionViewController.swift */,
+				C5289220263C1104008FF14E /* CollectionViewCell.swift */,
 				C52891F6263C0DCB008FF14E /* Assets.xcassets */,
 				C52891F8263C0DCB008FF14E /* LaunchScreen.storyboard */,
 				C52891FB263C0DCB008FF14E /* Info.plist */,
@@ -260,7 +266,9 @@
 			files = (
 				C52891F2263C0DCA008FF14E /* ViewController.swift in Sources */,
 				C52891EE263C0DCA008FF14E /* AppDelegate.swift in Sources */,
+				C5289221263C1104008FF14E /* CollectionViewCell.swift in Sources */,
 				C52891F0263C0DCA008FF14E /* SceneDelegate.swift in Sources */,
+				C5289226263C1125008FF14E /* CollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
