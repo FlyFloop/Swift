@@ -38,7 +38,7 @@ class infoViewController: UIViewController {
     */
 
     @IBAction func voteaction(_ sender: UIButton) {
-        let alert = UIAlertController(title: "EXCELLENT CHOIE", message: "\(aciklamastring)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "EXCELLENT CHOICE", message: "\(aciklamastring)", preferredStyle: .alert)
         let alertok = UIAlertAction(title: "Ok", style: .cancel, handler: .none)
         alert.addAction(alertok)
         present(alert, animated: true, completion: nil)
