@@ -15,6 +15,11 @@ class CollectionViewController: UICollectionViewController {
     var selectedindex = Int()
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+     layout.minimumLineSpacing = 1
+//            satırlar arası boşluk
+            
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
